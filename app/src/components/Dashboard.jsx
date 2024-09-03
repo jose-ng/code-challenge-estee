@@ -19,7 +19,7 @@ function Dashboard() {
     });
   }, [randomSearch]);
 
-  const fetchRandomFoodTruck = async () => {
+  const fetchRandomFoodTruck = () => {
     setRandomSearch(randomSearch * -1);
   };
 
