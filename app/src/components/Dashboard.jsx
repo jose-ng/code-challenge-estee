@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getTrucks } from "../services/trucks.service";
+import { getTrucks } from "../services/truckService";
 import { FoodTruckCard } from "./FoodTruckCard";
 
 function Dashboard() {
