@@ -13,11 +13,11 @@ class TrucksService {
    * @param {number} [limit=10] - The maximum number of trucks per page.
    * @returns {Array} - A list of trucks.
    */
-  async getAll(query, limit = 10) {
+  async getAll(offset = 100, limit = 100) {
     try {
       var url = new URL('https://data.sfgov.org/api/id/rqzj-sfat.json')
       let params = {
-        $query: query ? `select *, :id search '${query}''' limit ${limit}` : `select *, :id limit 100`,
+        $query: offset ? `select *, :id offset ${offset} limit ${limit}` : `select *, :id limit ${limit}`,
         $$query_timeout_seconds: 30,
       };
       url.search = new URLSearchParams(params).toString();

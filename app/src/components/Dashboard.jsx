@@ -5,8 +5,16 @@ import { FoodTruckCard } from "./FoodTruckCard";
 function Dashboard() {
   const [foodTruck, setFoodTruck] = useState(null);
   const [randomSearch, setRandomSearch] = useState(1);
+
+  const getRandomOffset = () => {
+    const randomNumber = Math.floor(Math.random() * 4);
+    return randomNumber * 100;
+  };
+
   useEffect(() => {
-    getTrucks().then((data) => {
+    const offset = getRandomOffset();
+    getTrucks(offset).then((rawData) => {
+      const data = offset % 2 === 0 ? rawData.reverse() : rawData;
       setFoodTruck(data[0]);
     });
   }, [randomSearch]);

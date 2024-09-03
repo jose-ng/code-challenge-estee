@@ -14,8 +14,8 @@ const trucksService = new TrucksService();
 router.get('/',
   async (req, res, next) => {
     try {
-      const { query, limit } = req.query;
-      const result = await trucksService.getAll(query, limit);
+      const { offset, limit } = req.query;
+      const result = await trucksService.getAll(offset, limit);
       res.json(result);
     } catch (error) {
       next(error);
